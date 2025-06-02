@@ -1,0 +1,23 @@
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+*.so
+
+# Virtual environment
+venv/
+.env/
+.venv/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Output files
+outputs/*.h5
+outputs/*.pkl
+outputs/*.png
+outputs/*.pdf
+outputs/**/*.txt
+
+# OS files
+.DS_Store
+Thumbs.db
