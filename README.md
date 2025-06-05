@@ -10,17 +10,38 @@ This project implements predictive maintenance for elevators using sensor data a
 - Evaluation (Precision, Recall, F1, Confusion Matrix, ROC)
 - PDF report generator
 
-## Dataset
+## Dataset Source
 
 Kaggle Elevator Predictive Maintenance Dataset  
 [Vibration-based failure classification dataset](https://www.kaggle.com/datasets/ninorapicavoli/elevator-predictive-maintenance)
 
-## Results Summary
+ ## Processed Dataset Summary
 
-- Accuracy: **99.08%**
-- Recall (Faults): **1.00**
-- Precision (Faults): **0.85**
-- AUC: **0.9997**
+**Source:** Kaggle - Elevator Predictive Maintenance Dataset  
+**Samples:** 112,001  
+**Faults:** 5,598 (~5%)  
+**Features:** `revolutions`, `humidity`, `vibration`, `x1` to `x5` (engineered)
+
+## Models Implemented
+ ----------------------------------------------
+| Model                  | Accuracy | F1-Score |
+|------------------------|----------|----------|
+| Neural Network         | 99.1%    | 0.99     |
+| Random Forest          | 97.9%    | 0.96     |
+| Support Vector Machine | 96.8%    | 0.95     |
+
+## VS Benchmark
+
+Our results are compared with **Liu et al. (2022)** which used Autoencoder + RF on a simulated dataset and achieved:
+- **Accuracy:** 97.1%
+- **F1-Score:** 0.94
+
+## Report
+
+- Benchmark comparison table
+- Evaluation metrics
+- Plots: ROC Curve, Confusion Matrix
+- PDF report: `outputs/evaluation/final_model_report.pdf`
 
 ##  Citation
 
@@ -44,11 +65,6 @@ python src/generate_report.py
 
 
 ## Next Steps
-Benchmark comparison
-
-SVM and Random Forest experiments
-
-Final thesis write-up integration
 
 ## Author
 Baba Drammeh — Master's Thesis, University of Padova & Pisa
