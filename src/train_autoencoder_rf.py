@@ -58,4 +58,4 @@ report = classification_report(y_test, y_pred, output_dict=False)
 with open("outputs/evaluation/benchmark/autoencoder_rf_report.txt", "w") as f:
     f.write(report)
 
-print("✅ Autoencoder + RF training complete. Report saved.")
+print(" Autoencoder + RF training complete. Report saved.")

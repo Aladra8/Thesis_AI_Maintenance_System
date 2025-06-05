@@ -1,96 +1,3 @@
-# # src/evaluate_model.py
-
-# import os
-# import pandas as pd
-# import numpy as np
-# import matplotlib.pyplot as plt
-# import seaborn as sns
-# from sklearn.metrics import (
-#     confusion_matrix, classification_report,
-#     roc_auc_score, roc_curve
-# )
-# from sklearn.model_selection import train_test_split
-# from tensorflow.keras.models import load_model
-
-# # ------------------------------
-# # Setup paths
-# # ------------------------------
-# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-# X_PATH = os.path.join(BASE_DIR, "data", "processed", "X_processed.csv")
-# Y_PATH = os.path.join(BASE_DIR, "data", "processed", "y_labels.csv")
-# MODEL_PATH = os.path.join(BASE_DIR, "models", "model.h5")
-# EVAL_DIR = os.path.join(BASE_DIR, "outputs", "evaluation")
-
-# # Ensure output directory exists
-# os.makedirs(EVAL_DIR, exist_ok=True)
-
-# # ------------------------------
-# # Load data and model
-# # ------------------------------
-# print("📥 Loading processed data and model...")
-# X = pd.read_csv(X_PATH)
-# y = pd.read_csv(Y_PATH).squeeze()  # Convert DataFrame to Series
-# model = load_model(MODEL_PATH)
-
-# # ------------------------------
-# # Train/test split
-# # ------------------------------
-# X_train, X_test, y_train, y_test = train_test_split(
-#     X, y, test_size=0.2, random_state=42, stratify=y
-# )
-
-# # ------------------------------
-# # Evaluate model
-# # ------------------------------
-# print("🔍 Evaluating model...")
-# y_pred_probs = model.predict(X_test).flatten()
-# y_pred = (y_pred_probs >= 0.5).astype(int)
-
-# # ------------------------------
-# # Classification report
-# # ------------------------------
-# report = classification_report(y_test, y_pred, output_dict=True)
-# report_df = pd.DataFrame(report).transpose()
-# report_df.to_csv(os.path.join(EVAL_DIR, "classification_report.csv"))
-# print("✅ Classification report saved.")
-
-# # ------------------------------
-# # Confusion Matrix
-# # ------------------------------
-# cm = confusion_matrix(y_test, y_pred)
-# plt.figure(figsize=(5, 4))
-# sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', cbar=False)
-# plt.title("Confusion Matrix")
-# plt.xlabel("Predicted")
-# plt.ylabel("Actual")
-# plt.tight_layout()
-# plt.savefig(os.path.join(EVAL_DIR, "confusion_matrix.png"))
-# plt.close()
-# print("✅ Confusion matrix saved.")
-
-# # ------------------------------
-# # ROC Curve
-# # ------------------------------
-# roc_auc = roc_auc_score(y_test, y_pred_probs)
-# fpr, tpr, _ = roc_curve(y_test, y_pred_probs)
-
-# plt.figure(figsize=(6, 4))
-# plt.plot(fpr, tpr, label=f"AUC = {roc_auc:.2f}")
-# plt.plot([0, 1], [0, 1], linestyle='--', color='gray')
-# plt.title("ROC Curve")
-# plt.xlabel("False Positive Rate")
-# plt.ylabel("True Positive Rate")
-# plt.legend()
-# plt.tight_layout()
-# plt.savefig(os.path.join(EVAL_DIR, "roc_curve.png"))
-# plt.close()
-# print(f"✅ ROC curve saved (AUC: {roc_auc:.2f})")
-
-# # ------------------------------
-# # Done
-# # ------------------------------
-# print("🎉 Evaluation complete. Results saved to outputs/evaluation/")
-
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -101,11 +8,11 @@ import joblib
 from tensorflow.keras.models import load_model
 import os
 
-# 📂 Ensure output directories exist
+#  Ensure output directories exist
 os.makedirs("outputs/evaluation", exist_ok=True)
 
-# 📦 Load the test data
-print("📦 Loading dataset and model...")
+#  Load the test data
+print(" Loading dataset and model...")
 df = pd.read_csv("data/raw/predictive-maintenance-dataset.csv")
 
 # Rename sensor columns (for consistency)
@@ -173,4 +80,4 @@ plt.tight_layout()
 plt.savefig("outputs/evaluation/roc_curve.png")
 plt.close()
 
-print("✅ Evaluation complete. Results saved in 'outputs/evaluation/'")
+print(" Evaluation complete. Results saved in 'outputs/evaluation/'")

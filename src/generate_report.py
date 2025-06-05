@@ -94,4 +94,4 @@ with PdfPages(REPORT_PDF) as pdf:
         pdf.savefig()
         plt.close()
 
-print(f"✅ Final report saved to: {REPORT_PDF}")
+print(f" Final report saved to: {REPORT_PDF}")

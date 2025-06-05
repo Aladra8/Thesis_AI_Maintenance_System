@@ -31,4 +31,4 @@ report = classification_report(y_test, y_pred, output_dict=False)
 with open("outputs/evaluation/benchmark/svm_report.txt", "w") as f:
     f.write(report)
 
-print("✅ SVM training complete. Report saved.")
+print(" SVM training complete. Report saved.")
